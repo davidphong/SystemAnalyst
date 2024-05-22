@@ -1,0 +1,4 @@
+[!] Biếu đô hoạt động (ACTIVITY - DIAGRAM) 
+    - Mô tả luồng các sự kiện (action-steps) diễn ra trong UC. 
+    - Nếu như có kịch bản của UC thì hoàn toàn ánh xạ sang AD được 
+    - Biểu đồ hoat động (AD) chính là việc dùng đồ thị để biểu diễn kịch bản của UC 

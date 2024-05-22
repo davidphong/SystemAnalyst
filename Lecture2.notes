@@ -1,0 +1,74 @@
+[!]  Tiến trình phát triển phần mềm 
+    - trong tiến trình phát triển phần mềm: 
+        - pha đầu tiên: 
+            - tiếp nhận yêu cầu của khách hàng => phân thích và nắm vững được các yêu cầu của khách Hàng 
+            => phân tích và đặc tả yêu cầu của hệ thống => phân tích và thiết kế ra được hệ thống phầm mềm khớp với 
+            yêu cầu của khách hàng 
+    *1, Mô hình hóa nghiệp vụ của hệ thống cần quản lý*  (hệ thống vật lý)
+        - Đặc tả được những hoạt động nghiệp vụ diễn ra trong hệ thống, những quy tắc quản lý, những công thức 
+        tính toán, định ngữ được những từ ngữ chuyên môn (bộ từ điển chuyên ngành)
+            VD: - Khách hàng sau khi lựa chọn trên kệ thì sẽ tiến hành thanh toán ở quầy thu ngân
+                - Cuối mỗi tuần nhân viên sẽ thống kê báo cáo xem sản phầm nào bán chạy nhất/ít nhất 
+                - Nhân viên chịu trách nhiệm nhập một số sản phẩm nhất định 
+                - Nếu nhân viên nghỉ quá số ngày nghỉ phép được quy định thì sẽ bị phạt (chấm công)
+                - Voucher: định nghĩa Voucher là gì ...
+                    Vào dịp sinh nhật của siêu thị, siêu thị sẽ tung ra một số lượng vourcher để giảm giá.
+                    Voucher có giá trị 50k 
+                    - Thời hạn khuyến mãi
+                    - giá trị khuyến mãi 
+                    - số lượng khuyến mãi 
+    *2, Đặc tả yêu cầu chức năng của hệ thống phần mềm* (logic)
+        - Hệ thống vật lý (hệ thống hoạt động bên phía khách hàng) - Hệ thống logic (Chính là phần mềm mà ta cần phải thiết kế ) 
+        VD:  Quản lý siêu thị 
+            Hệ thống vly: Siêu thị 
+            Hệ thống logic: Phần mềm qly siêu thị 
+
+            Quản lý bệnh viện: 
+            Hệ thống vly: Bệnh viện 
+            Hệ thống logic: Phầm mềm quản lý bệnh viện 
+        => tập chung vào đặc tả yêu cầu chức năng 
+        - Phần mềm sẽ cung cấp các chức năng sau: 
+            Who và What 
+                - nhân viên thu ngân sử dụng các chức năng
+                    + thanh toán hóa đơn cho khách hàng 
+                        - hệ thống lưu lại dữ liệu, tính tổng tiền của hóa đơn 
+                        - hệ thống hiển thị các sản phầm trong hóa đơn, thành tiền  và tổng tiền 
+                        - nhân viên xác nhận thanh toán 
+                        - hệ thống lưu hóa đơn vào CSDL 
+                        - Ghi chú
+                            - Khi tạo hóa đơn cho khách hàng, nếu HT kiểm tra có mã thẻ TV, thì sau khi nhân viên xác nhận "đã thanh toán",
+                            HT sẽ tự động tích điểm vào thẻ thành viên 
+                                Cthuc tích điểm: 100k = 1 đ 
+                            - Đổi điểm: 
+                                Hthong kiểm tra số diểm tích lũy trong thẻ thành viên, nếu số điểm tích lũy >= 50, HT hiển thị ra thông báo 
+                                "Đủ đk Đổi điểm". Nếu nhân viên xác nhận đổi điểm thì HT trừ đi số tiền tương ứng trong tổng tiền hóa đơn. 
+                                HT trừ số điểm tích lũy tương ứng trong thẻ thành viên. 
+                - nhân viên chăm sóc khách hàng sử dụng chức năng 
+                    + chức năng đổi trả hàng: 
+                        - khi nhận được yêu cầu đổi / trả  nhân viên kiểm tra các tiêu chí 
+                            - Đổi trả trong vòng 30 ngày
+                            - chất lượng giống như lúc chưa qua sử dụng 
+                            - khách hàng phải có hóa đơn khi mua sản phẩm
+                            - khách hàng sử dụng thẻ thành viên khi mua sản phẩm đó
+                            - kiểm tra xem hóa đơn đã được đổi trả hay chưa 
+                        
+                        + chức năng tạo phiếu chi cho trường hợp muốn trả: 
+                            phiếu chi gồm các trường dữ liệu: 
+                                Mã phiếu, mã hóa đơn, mã sp, thông tin hóa đơn, thông tin sản phầm, thông tin khách hàng, ngày trả  
+                            - Nếu điều kiện đổi thỏa mãn nhân viên thực hiện nhập mã hóa đơn để lấy dữ liệu trong kho dữ liệu 
+                            để so sánh 
+                                + nếu hóa đơn đúng với trong cơ sở dũ liệu
+                                    + bắt đầu nhập phiếu chi nhân viên ghi rõ số phiếu theo quy tắc: 
+                                            mã hóa đơn - 1 
+                                    + nhân viên ghi rõ ngày đổi, họ tên khách hàng, số điện thoại, mã sản phẩm
+                                    + sau khi nhập xong, hệ thống sẽ tiến hành cập nhật lại trong csdl trường thông tin trả hàng ở trong hóa đơn
+                                    + nhân viên chăm sóc khách hàng xuất phiếu chi cho khách hàng. 
+                            nếu điều kiện đổi không thỏa mãn thì không thực hiện yêu cầu tạo phiếu và hiện ra thông báo không đủ điều kiện đổi trả 
+                        + chức năng tạo phiếu chi cho trường hợp muốn trả 
+
+                            
+                                
+
+
+
+

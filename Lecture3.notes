@@ -1,0 +1,13 @@
+[!] Khái niệm về mô hình hóa đối tượng 
+*1, mô hình là gì ? *
+    - Mô hình nhằm để biểu diễn, phản ánh 1 đối tượng trong thế giới thực 
+    - là một tập hợp hình ảnh, khí hiệu để mô tả 1 đối tượng nào đó 
+    - nhằm nắm bắt những khía cạnh quan trọng của sự vật, bỏ qua các khía cạnh không quan trọng 
+*2, Mô hình hóa hệ thống * 
+    - là việc dùng mô hình để hiểu và biểu diễn hệ thống. Như vậy, quá trình PTTK hệ thống 
+    có thể hiểu chính là quá trình mô hình hóa hệ thống. 
+    - mục đích mô hình hóa hệ thống: 
+        - nắm bắt chính xác yêu cầu và tri thức miền (nghiệp vụ) mà hệ thống cần phát triển
+*Xu hướng mô hình hóa hệ thống*
+    - mô hình hóa hướng chức năng
+    - mô hình hóa hướng đối tượng

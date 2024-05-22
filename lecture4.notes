@@ -1,0 +1,57 @@
+[!] Use Case
+    UC = 1 chức năng của hệ thống 
+    trả lời đc cho câu hỏi: Kết quả UC là gì ? Khi hoàn thành UC thì UC trả về kết quả gì ? 
+
+    UC bao gồm nhiều action steps 
+    Nhìn về góc độ lập trình UC có thể tương đương với 1 phương thức (hàm) hoặc nhiều phương thức 
+    - include: để thực hiện A thì phải thực hiện B (A chứa B) 
+    [!] Phân biệt rõ *Usecase* và *Actionstep* (nếu Usecase không phân rã được những action step -> sus)
+    - extend: Sau khi thực hiện A có thể thực hiện B hoặc không 
+    - generalization: (kế thừa) 
+- Phân rã Usecase: 
+    1 UC lớn muốn phân rã thành các UC con 
+    UC mức 0: phân rã tổng quát nhất 
+    UC ở mức 1: Phân rã UC từ mức 0 
+    UC ở mức 2: Phân rã UC mức 1 
+
+- Đặc tả usecase: (kịch bản usecase) - UC Specification (UC Schenario)
+    - Luồng sự kiện chính: (basic flow)
+        Nói rõ các "ACTION STEP" diễn ra như thế nào để UC "THÀNH CÔNG" 
+    *Action step* : 
+        B1: Ai (tác nhân hoặc HT) làm gì 
+        B2: Ai làm gì 
+        ...
+        Kêt thúc bước nào 
+    - Thông thường:
+        Tác nhân nhập dữ liệu 
+        Tác nhân yêu cầu làm ... 
+        HT kiểm tra dữ liệu, tính toán DL, hiển thị  
+        
+! Cách 1: tách thanh toán và tích điểm thành 2 UC   
+    [!] Use case thanh toán 
+    [√] VD: Basic Flow 
+        1, NV nhập SP và số lượng 
+        2, Hệ thống tính thành tiềnm tổng tiền và hiển thị thông tin hóa đơn: Mã sp, tên sp, số lượng,
+            đơn giá, thành tiền, toongt tiền 
+        3, HT yêu cầu nhân viên nhập mã thẻ TV
+            3.0 Nhân viên không nhập mã thẻ TV 
+                3.0.1 HT chuyển sang Bước 4
+            3.1 NV nhập mã thẻ TV
+                3.1.1 HT kiểm tra số điểm tích lũy của mã thẻ tv 
+                    + Nếu số điểm tích lũy nhỏ hơn 50, HT chuyển sang Bước 4 
+                    + Nếu số điểm tích lũy lớn hơn hoặc bằng 50:
+                        - HT trừ tổng tiền của hóa đơn (50Đ = 50k)
+                        - Trừ đi điểm tích lũy tương ứng của thẻ TV 
+        4, Nhân viên xác nhận thanh toán  
+        5, HT lưu hóa đơn vào CSDL và in hóa đơn. 
+
+    [√] VD: luông sự kiện ngoại lệ:
+        4a. NV hủy đơn hàng
+        4a.1 HT quay trở về màn hình chính 
+    [!] Use case tích điểm: 
+        Actor: Không có (HT tự động)
+        ĐK kích hoạt (trigger): 
+            - HT kiểm tra thấy có mã thẻ TV 
+            - Hóa đơn được lưu thành công vào CSDL 
+        Basic Flow: 
+            1, HT cộng thêm điểm tương ứng với tổng tiền của hóa đơn vào thẻ TV (100k = 1đ)

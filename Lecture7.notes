@@ -1,0 +1,37 @@
+[!] Lớp 
+    thuộc tính + phương thức 
+    -> có biểu đồ UC: xác định xem có những lớp nào tham gia vào để cài đặt UC 
+    Tìm đc lớp tham gia vào cài đặt UC -> tìm đc các phương thức cần thiết để cài đặt UC
+    [√] 1, lớp phân tích 
+    - lớp biên: lớp chứa các phương thức giao tiếp với người dùng
+    - control class: lớp điều hướng -> đứng giữa lớp biên và lớp thực thể để những request của biên tới thực thể và ngược lại 
+    - entity class: lớp thực thể -> giao tiếp với cơ sở dữ liệu
+VD: 
+A       B       C
+
+class A{
+    
+    đăng ký(info)
+    {
+        B b = new B();
+        b.yêu cầu đăng ký(info);
+    }
+}
+
+class B{
+    yêu cầu đăng ký(info)
+    {
+        C c = new C();
+        c.đăng ký(info);
+    }
+}
+
+class C {
+    đăng ký(info)
+    {
+        //lưu vào cơ sở dữ liệu
+        insert into table(info); 
+    }
+}
+
+[√] 2, lớp thực thể

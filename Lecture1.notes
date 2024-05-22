@@ -1,0 +1,69 @@
+[!] ! 2 giai đoạn chính 
+    - phân tích theo yêu cầu của khách hàng: (Khảo sát bài toán)
+        Đặc tả được những hoạt động diễn ra trong hệ thống (môi trường) của khách hàng.
+        Từ đó đặc tả được *những quy tắc quản lý*, *những công thức tính toán trong hệ thống đó* 
+        ví dụ: 
+            "hệ thống của khách hàng (vật lý)" -> "Hệ thống phầm mềm (logic)"
+               
+            Phát triển 1 phần mềm quản lý siêu thị
+                1. Đặc tả được yêu cầu của khách hàng: 
+                    Đặc tả được những hoạt động, nghiệp vụ diễn ra trong siêu thị, những quy tắc quản lý đi kèm ,
+                    những công thức tính toán nếu có. 
+
+                    - Nghiệp vụ bán hàng:
+                        Khách hàng sau khi chọn được sản phẩm cần mua thì sẽ mang giỏ hàng đến quầy thu tiền để thanh toán.
+                        Nhân viên thu ngân sẽ tiến hành tính tiền cho khách hàng. Sau đó NVTN sẽ lưu lại hóa đơn và in ra hoá đơn 
+                        cho khách. Thông tin hóa đơn gồm:
+                            Mã Hóa đơn, Mã SP, tên SP, Đơn giá, thành tiền (SL*đơn giá), tổng tiền của hóa đơn. Ngoài ra có thêm
+                            thông tin: tên khách hàng, số DT KH, tên nhân viên thu ngân, số tích điểm của hóa đơn (nếu có).
+
+                        Khi tiến hành thanh toán, khách hàng nếu có thẻ thành viên thì sẽ được tích điểm vào thẻ TV. CT tích điểm được tính như sau: 
+                        cứu 100k thì được 1 điểm. 
+
+                        Ngoài ra khách hàng có thẻ thành viên cũng đucợ phép đổi điểm để trừ tiền trên hóa đơn. CT đổi điểm như sau:
+                            Nếu thẻ thành viên đủ 50đ thì được phép trừ 50k. Sau khi đổi điểm thì số điểm trên thẻ sẽ giảm đi tương ứng với số điểm đổi. 
+                    
+                    - Nghiệp vụ cskh: 
+                        khách hàng có thể đăng ký làm thẻ thành viên ở quầy cskh. Trong trường hợp bị mất thẻ khách hàng cũng được phép đăng ký thẻ mới. 
+                        Khi đó thẻ cũ tương ứng với SĐT khách hàng sẽ bị xóa 
+
+                        Khách hàng được phép đổi hoặc trả sản phẩm:
+                            Quy tắc đổi trả sản phẩm:
+                             - sản phẩm chưa dùng quá 30 ngày
+                             - Hàng phải có chất lượng giống như lúc mua chưa qua sử dụng 
+                             - Khách hàng phải có hóa đơn khi mua hàng. 
+                             - một hóa đơn chỉ được đổi trả 1 lần duy nhất
+                             - khách hàng có sử dụng thẻ thành viên khi mua hàng 
+                        Nếu đổi hàng
+                            
+                        Nếu trả hàng  
+                    - Nghiệp vụ nội bộ:  (quản lý nhân sự , phạt/thưởng , thống kê)
+                        + Nhân viên sẽ thực hiện chấm công vào đầu ca và cuối ca làm việc . 
+                            Khi nhân viên chấm công đầu ca muộn thì sẽ bị trừ lương theo công thức : 
+                            muộn 30 phút trừ 20k và bị tích muộn , muộn quá một tiếng coi như vắng ca và không tính lương . 
+                            Khi bị tích muộn quá 5 buổi hoặc vắng 3 buổi trên 1 tháng thì sẽ bị phạt 5% lương .
+                            Khi nhân viên không chấm công vào cuối ca thì sẽ bị tích đánh dấu và nếu số lần tích trên 1 tháng quá 5 lần trên 1 tháng 
+                            thì sẽ có mức phạt theo công thức : 
+                                    Trừ 5% lương .
+                        + Quản lý năng suất làm việc của nhân viên : 
+                            Đối với nhân viên bán hàng : 
+                                Dựa vào doanh thu cuối tháng . Với các nhân viên vượt doanh số đề ra thì có khen thưởng dựa trên công thức sau :
+                                    (Doanh thu - chỉ tiêu )*10%. Với các nhân viên chưa đạt chỉ tiêu thì có hình thức nhắc nhở và tích lại .
+                                    Nếu số lần tích vượt quá 5 lần thì xem xét buộc thôi việc .
+                            Đối với nhân viên tư vấn : 
+                                Dựa vào đánh giá trải nghiệm của khách hàng . Nếu đánh giá ở mức tích cực cao thì thưởng cuối tháng theo công thức : 
+                                    mức lương * 5%
+                        + Cuối tuần , nhân viên sẽ đưa ra các thống kê về sản phẩm bán chạy và bán ít .Từ đó đưa ra được các voucher giảm giá theo công thức : 
+                            Các sản phẩm có lượng bán ra ít sẽ có các voucher giảm giá 10%  , số lượng voucher cho một tuần không qúa 200 , 
+                            và thời hạn khuyến mãi trong ngày thường là 2 ngày (không tính thứ 7,chủ nhật ).
+                    - Nghiệp vụ nhập hàng:
+                        + Quản lý nhập hàng : 
+                        Dựa vào thống kê số lượng bán ra của từng sản phẩm để nhập các mặt hàng cần thiết . 
+                        Nhân viên kho là người trực tiếp quản lý nhập hàng , kiểm kê số lượng với từng sản phẩm . 
+                        Nếu hàng nhập vào có lỗi không do nhà sản xuất hoặc xảy ra mất mát hàng hóa , chất lượng bảo quản không đảm bảo gây ảnh hưởng chất lượng sản phẩm ,... 
+                        thì trách nhiệm sẽ do nhân viên kho chịu hoàn toàn 100% giá trị mất mát của sản phẩm
+                2. Đặc tả yêu cầu của hệ thống: 
+                
+
+    - đặc tả được yêu cầu của phần mềm: (hệ thống)
+    - thiết kế + phân tích sản phẩm:

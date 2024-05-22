@@ -1,0 +1,86 @@
+
+! cách 2: tách thanh toán và tích điểm thành 2 action step trong 1 UC 
+    [!] Use case thanh toán và tích điểm 
+    [√] VD: Basic Flow 
+        1, NV nhập SP và số lượng 
+        2, Hệ thống tính thành tiềnm tổng tiền và hiển thị thông tin hóa đơn: Mã sp, tên sp, số lượng,
+            đơn giá, thành tiền, toongt tiền 
+        3, HT yêu cầu nhân viên nhập mã thẻ TV
+            3.0 Nhân viên không nhập mã thẻ TV 
+                3.0.1 HT chuyển sang Bước 4
+            3.1 NV nhập mã thẻ TV
+                3.1.1 HT kiểm tra số điểm tích lũy của mã thẻ tv 
+                    + Nếu số điểm tích lũy nhỏ hơn 50, HT chuyển sang Bước 4 
+                    + Nếu số điểm tích lũy lớn hơn hoặc bằng 50:
+                        - HT trừ tổng tiền của hóa đơn (50Đ = 50k)
+                        - Trừ đi điểm tích lũy tương ứng của thẻ TV 
+        4, Nhân viên xác nhận thanh toán  
+        5, HT lưu hóa đơn vào CSDL và in hóa đơn. 
+        6, HT kiểm tra có mã thẻ thành viên hay không: 
+            - nếu có cộng thêm điểm tương ứng với tổng tiền của hóa đơn vào thẻ TV (100k = 1đ)
+
+    [√] VD: luông sự kiện ngoại lệ:
+        4a. NV hủy đơn hàng
+        4a.1 HT quay trở về màn hình chính
+
+- Đặc tả usecase: (kịch bản usecase) - UC Specification (UC Schenario)
+    VD: UC đổi trả hàng 
+    [√] VD: Basic Flow 
+        1, NV nhập mã hóa đơn để tìm kiếm đơn hàng 
+        2, Hiển thị thông tin hóa đơn
+        3, NV chọn sản phẩm cần đổi trả
+        4, HT thực hiển kiểm tra các tiêu chí đổi trả: 
+            + Ngày hiện tại - ngày mua <= 30 ngày
+            + SP chưa đc đổi trả lần nào 
+            + Có mã thẻ TV trong hóa đơn mua 
+        5, Nếu cả 3 đk ở bước 4 thỏa mãn, HT hiển thị chức năng "đổi hàng" và "trả hàng"
+
+    [√] VD: luông sự kiện ngoại lệ:
+        5a HT kiểm tra thấy 1 trong số 3 điều kiện không thỏa mãn
+        5a.1 HT hiển thị thông báo không đủ đk đổi/trả 
+        5a.2 quay trở về màn hình chính
+        7a. NV hủy đổi trả 
+        7a.1 HT quay trở về màn hình chính
+
+    [√] UC đổi hàng:
+        1, HT hiển thị phiếu đổi hàng: các trường thông tin đc điền sẵn bởi HT : Ngày đổi - số hđ mua - 
+        mã thẻ tv - mã sp mua - đơn giá 
+        2, NV nhập thông tin mã sp nhận, đơn giá của sp nhận. HT tự động sinh ra số tiền chênh lệch 
+        3, NV xác nhận đổi hàng 
+        4, HT lưu thông tin đổi hàng vào CSDL và in phiếu đổi hàng
+    [√] luồng sự kiện ngoại lệ: 
+        3a. NV hủy đổi hàng 
+        3a.1 HT quay trở về màn hình chính 
+    
+    [√] UC trả hàng: 
+        1, HT hiển thị phiếu trả hàng: các trường thông tin đc điền sẵn bởi HT : Ngày trả - số hđ mua - 
+        mã thẻ tv - mã sp mua - đơn giá - số tiền trả lại cho khách 
+        2, NV xác nhận trả hàng 
+        3, HT lưu thông tin trả hàng vào CSDL và in phiếu trả hàng
+
+    [√] luồng sự kiện ngoại lệ: 
+        2b. NV hủy trả hàng 
+        2b.1 HT quay trở về màn hình chính
+    
+    [√]  UC quản lý thẻ thành viên 
+        1, HT hiển thị danh sách thẻ thành viên
+        2, NV chọn 1 trong 3 chức năng: Thêm - sửa - xóa 
+            2.1 NV chọn thêm thẻ thành viên 
+                2.1.1 HT hiển thị form thêm thẻ thành viên, HT tự động thêm mã thẻ thành viên 
+                2.1.2 NV nhập thông tin thẻ thành viên: Họ tên - ngày sinh - sđt - email
+                2.1.3 HT lưu thông tin thẻ thành viên vào CSDL
+            2.2 NV chọn sửa thẻ thành viên
+                2.2.1 HT hiển thị danh sách thẻ thành viên
+                2.2.2 NV chọn thẻ thành viên cần sửa 
+                    cách 1: nhân viện chọn thẻ tv 
+                    cách 2: nhân viên nhập mã thẻ tv vào thanh tìm kiếm
+                2.2.3 HT hiển thị form sửa thông tin thẻ thành viên
+                2.2.4 NV sửa thông tin thẻ thành viên 
+                2.2.5 HT lưu thông tin thẻ thành viên vào CSDL
+            2.3 NV chọn xóa thẻ thành viên
+                2.3.1 HT hiển thị danh sách thẻ thành viên
+                    cách 1: nhân viện chọn thẻ tv 
+                    cách 2: nhân viên nhập mã thẻ tv vào thanh tìm kiếm
+                2.3.2 NV chọn thẻ thành viên cần xóa 
+                2.3.3 HT xác nhận xóa thẻ thành viên 
+                2.3.4 HT xóa thông tin thẻ thành viên trong CSDL

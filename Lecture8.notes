@@ -1,0 +1,15 @@
+[!] Biểu đồ tuần tự 
+    UC => tìm xem có những ai tham gia vào để thực hiện được UC đó = biểu đồ lớp phân tích:
+            Biên - điều khiển - thực thể tham gia vào cài đặt UC 
+        A = Phân công công việc cho từng lớp. Tất cả hành vi của UC được phân phối vào từng lớp => Mỗi lớp chịu trách nhiệm làm gì ? 
+        B = Sự tương tác giữa các lớp 
+        [!] => Biểu đồ tuần tự sẽ mô hình hóa A và B 
+        life time: thời gian sống của 1 đối tượng 
+        message: giao tiếp giữa 2 đối tượng 
+        [!] => BIỂU ĐỒ LỚP CHI TIẾT CỦA UC:
+            Chi tiết hóa từ biểu đồ tuần tự, ta sẽ chi tiết hóa đc biểu đồ lớp phân tích. 
+            Biểu đồ lớp phân tích: chỉ ra 1 cách đại khái (không cần chính xác và đầy đủ) các thuộc tính và phương thức 
+            của từng lớp 
+            Biểu đồ lớp chi tiết: chỉ ra CHÍNH XÁC và CHI TIẾT lớp đó có THUỘC TÍNH và PHƯƠNG THỨC nào 
+
+[!] BTVN vẽ biểu đồ tuần tự cho usecase tạo hóa đơn của quản lý siêu thị, sử dụng C# để cài đặt use case đăng nhập. Yêu cầu sử dụng đầy đủ 3 lớp đề cài đặt. 
